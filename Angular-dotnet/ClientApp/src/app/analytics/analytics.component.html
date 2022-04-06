@@ -1,0 +1,81 @@
+<form novalidate [formGroup]="authorForm">
+    <div class="card row card-row">
+      <div class="card-header">
+        <div class="row">
+          <div class="col-md-6">
+            <img src="../assets/c-sharpcorner.png" class="logo"> C# Corner Author Analytics
+          </div>
+          <div class="col-md-6 total-author-position">
+            <label>Total</label>&nbsp;<label class="total-author-color-change">Authors</label>  populated so far : {{authors.length}}
+          </div>
+        </div>
+      </div>
+  
+      <div class="card-body">
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group row mb-4">
+              <label class="col-md-3 col-form-label" for="authorId">Author Id</label>
+              <div class="col-md-4">
+                <input class="form-control" id="authorId" formControlName="authorId" type="text"
+                       placeholder="Eg: sarath-lal7" />
+              </div>
+              <div class="col-md-5">
+                <button class="btn btn-primary mr-3" (click)="populateData()">
+                  Populate Author Data
+                </button>
+              </div>
+            </div>
+  
+            <div class="form-group row mb-4">
+              <label class="col-md-3 col-form-label" for="authorId">Author Name</label>
+              <div class="col-md-4">
+                <select class="form-select" formControlName="author" (ngModelChange)="fillCategory()" id="authorId">
+                  <option value="" disabled>Select an Author</option>
+                  <option *ngFor="let myauthor of authors" [ngValue]="myauthor">{{myauthor.author}} </option>
+                </select>
+              </div>
+              <label class="col-md-2 col-form-label" for="chartType">Chart Type</label>
+              <div class="col-md-3">
+                <select id="chartType" class="form-select" formControlName="chartType">
+                  <option value="pie">Pie</option>
+                  <option value="doughnut">Doughnut</option>
+                  <option value="polarArea">Polar Area</option>
+                  <option value="radar">Radar</option>
+                  <option value="bar">Bar</option>
+                  <option value="line">Line</option>
+                </select>
+              </div>
+            </div>
+  
+            <div class="form-group row mb-4" *ngIf="categories.length>0">
+              <b class="col-md-7">
+                Total Categories : {{ categories.length}} &nbsp; &nbsp; Total Posts :
+                {{totalPosts}}
+              </b>
+              <div class="col-md-4">
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" formControlName="showLegend"
+                         (ngModelChange)="changeLegends()">
+                  <label class="form-check-label" for="flexCheckChecked">
+                    Show Chart Legends
+                  </label>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="chart-container chart-position" *ngIf="categories.length>0">
+              <canvas baseChart [data]="chartData" [type]="authorForm.value.chartType" [options]="chartOptions">
+              </canvas>
+            </div>
+            <div class="file-loader" *ngIf="showLoader">
+              <div class="upload-loader">
+                <div class="loader"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>

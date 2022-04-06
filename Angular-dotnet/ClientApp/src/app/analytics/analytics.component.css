@@ -1,0 +1,81 @@
+/* Spin Start*/
+
+.file-loader {
+    background-color: rgba(0, 0, 0, .5);
+    overflow: hidden;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 100000 !important;
+  }
+  
+  .upload-loader {
+    position: absolute;
+    width: 60px;
+    height: 60px;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+  }
+  
+    .upload-loader .loader {
+      border: 5px solid #f3f3f3 !important;
+      border-radius: 50%;
+      border-top: 5px solid #005eb8 !important;
+      width: 100% !important;
+      height: 100% !important;
+      -webkit-animation: spin 2s linear infinite;
+      animation: spin 2s linear infinite;
+    }
+  
+  @-webkit-keyframes spin {
+    0% {
+      -webkit-transform: rotate(0deg);
+    }
+  
+    100% {
+      -webkit-transform: rotate(360deg);
+    }
+  }
+  
+  @keyframes spin {
+    0% {
+      transform: rotate(0deg);
+    }
+  
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+  
+  /* Spin End*/
+  
+  .card-row {
+    margin: 40px;
+    height: 600px;
+  }
+  
+  .card-header {
+    background-color: azure;
+    font-weight: bold;
+  }
+  
+  .total-author-position {
+    text-align: right;
+  }
+  
+  .total-author-color-change {
+    color: blue;
+  }
+  
+  .logo {
+    width: 30px;
+  }
+  
+  .chart-position {
+    position: relative;
+    height: 17vh;
+    width: 34vw
+  }
